@@ -47,6 +47,7 @@
         .emoji {
             position: absolute;
             font-size: 2rem;
+            opacity: 0.8;
         }
     </style>
 </head>
@@ -57,16 +58,17 @@
         <button class="button" onclick="window.location.href='quiz.html'">Quiz Bíblico</button>
     </div>
     <script>
-        const emojis = ['📖', '📚', '📜'];
+        const emojis = ['📖', '📚', '📜', '✝️', '🙏'];
         const body = document.body;
-        emojis.forEach(() => {
+        for (let i = 0; i < 20; i++) {
             const emoji = document.createElement('div');
             emoji.classList.add('emoji');
             emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
             emoji.style.top = `${Math.random() * 100}%`;
             emoji.style.left = `${Math.random() * 100}%`;
+            emoji.style.transform = `rotate(${Math.random() * 360}deg)`;
             body.appendChild(emoji);
-        });
+        }
     </script>
 </body>
 </html>
