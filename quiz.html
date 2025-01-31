@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Bíblico</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question h2 {
+            margin: 0 0 10px;
+        }
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        .options li {
+            margin-bottom: 10px;
+        }
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Teste seus Conhecimentos Bíblicos</h1>
+    <div class="quiz-container">
+        <div class="question">
+            <h2>Pergunta 1: Qual foi o primeiro livro da Bíblia?</h2>
+            <ul class="options">
+                <li><input type="radio" name="q1" value="Gênesis"> Gênesis</li>
+                <li><input type="radio" name="q1" value="Êxodo"> Êxodo</li>
+                <li><input type="radio" name="q1" value="Levítico"> Levítico</li>
+                <li><input type="radio" name="q1" value="Números"> Números</li>
+            </ul>
+        </div>
+        <!-- Adicione mais perguntas aqui -->
+        <button class="submit-btn">Enviar Respostas</button>
+    </div>
+    <script>
+        // Script para manipular o quiz e ranking
+        document.querySelector('.submit-btn').addEventListener('click', function () {
+            // Lógica para calcular pontuação e mostrar ranking
+            alert('Respostas enviadas! Veja seu ranking.');
+        });
+    </script>
+</body>
+</html>
