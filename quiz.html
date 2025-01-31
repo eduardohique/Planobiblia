@@ -12,25 +12,169 @@
             padding: 20px;
             text-align: center;
         }
-        .header {
-            text-align: center;
-            color: #333;
-        }
-        .quiz-container {
+        .container {
             max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+        .question-container, .result-container, .start-container {
+            display: none;
         }
         .question {
+            font-size: 1.2rem;
             margin-bottom: 20px;
         }
-        .question h2 {
-            font-size: 1.5rem;
-            color: #ff6347;
+        .options button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 1rem;
+            color: white;
+            background-color: #ff6347;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
-        .options {
-            list-style: none;
-            padding: 0
+        .options button:hover {
+            background-color: #ff4500;
+            transform: translateY(-3px);
+        }
+        .message {
+            margin: 20px 0;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="start-container">
+            <h1>Bem-vindo ao Quiz Bíblico!</h1>
+            <label for="username">Digite seu nome:</label>
+            <input type="text" id="username">
+            <button onclick="startQuiz()">Iniciar Quiz</button>
+        </div>
+        <div class="question-container">
+            <h2 id="book-title"></h2>
+            <p id="question" class="question"></p>
+            <div class="options" id="options"></div>
+            <div class="message" id="message"></div>
+            <button onclick="nextQuestion()">Próxima Pergunta</button>
+        </div>
+        <div class="result-container">
+            <h2 id="final-message"></h2>
+            <p id="score"></p>
+            <button onclick="restartQuiz()">Reiniciar Quiz</button>
+            <h3>Ranking:</h3>
+            <ul id="ranking"></ul>
+        </div>
+    </div>
+    <script>
+        const questions = [
+            {
+                book: 'GÊNESIS',
+                question: 'Quem foi o primeiro homem criado por Deus?',
+                options: ['Abraão', 'Moisés', 'Adão', 'Noé'],
+                answer: 2
+            },
+            {
+                book: 'GÊNESIS',
+                question: 'Quantos dias Deus levou para criar o mundo?',
+                options: ['5', '6', '7', '40'],
+                answer: 1
+            },
+            {
+                book: 'GÊNESIS',
+                question: 'Qual o nome da esposa de Abraão?',
+                options: ['Sara', 'Rebeca', 'Raquel', 'Débora'],
+                answer: 0
+            },
+            {
+                book: 'GÊNESIS',
+                question: 'Quem foi vendido como escravo pelos irmãos e se tornou governador do Egito?',
+                options: ['Esaú', 'José', 'Moisés', 'Jacó'],
+                answer: 1
+            },
+            // Continue with the rest of the questions...
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let username = '';
+        const ranking = [];
+
+        function startQuiz() {
+            username = document.getElementById('username').value;
+            if (username.trim() === '') {
+                alert('Por favor, insira seu nome.');
+                return;
+            }
+            document.querySelector('.start-container').style.display = 'none';
+            document.querySelector('.question-container').style.display = 'block';
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const question = questions[currentQuestionIndex];
+            document.getElementById('book-title').textContent = `📖 ${question.book}`;
+            document.getElementById('question').textContent = `1️⃣ ${question.question}`;
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.onclick = () => checkAnswer(index);
+                optionsContainer.appendChild(button);
+            });
+            document.getElementById('message').textContent = '';
+        }
+
+        function checkAnswer(selectedIndex) {
+            const question = questions[currentQuestionIndex];
+            if (selectedIndex === question.answer) {
+                document.getElementById('message').textContent = 'Que isso eim é bom de Bíblia mesmo, Parabéns!';
+                score++;
+            } else {
+                document.getElementById('message').textContent = 'Oloco a gente tinha certeza que você tava lendo a bíblia todos os dias mas agora to revendo meus conceitos';
+            }
+            document.querySelectorAll('.options button').forEach(button => {
+                button.disabled = true;
+            });
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                showQuestion();
+            } else {
+                endQuiz();
+            }
+        }
+
+        function endQuiz() {
+            document.querySelector('.question-container').style.display = 'none';
+            document.querySelector('.result-container').style.display = 'block';
+            document.getElementById('final-message').textContent = `Parabéns, ${username}!`;
+            document.getElementById('score').textContent = `Você acertou ${score} de ${questions.length} perguntas.`;
+
+            ranking.push({ name: username, score: score });
+            ranking.sort((a, b) => b.score - a.score);
+            const rankingList = document.getElementById('ranking');
+            rankingList.innerHTML = '';
+            ranking.forEach(entry => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${entry.name}: ${entry.score}`;
+                rankingList.appendChild(listItem);
+            });
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            document.querySelector('.result-container').style.display = 'none';
+            document.querySelector('.start-container').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
