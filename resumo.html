@@ -70,7 +70,6 @@
             transition: background-color 0.3s ease;
         }
         .popup .close-button {
-            display: inline-block;
             margin-top: 10px;
             padding: 8px 15px;
             background-color: #ff6347;
@@ -79,7 +78,6 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            margin-right: 10px;
         }
         .popup button:hover,
         .popup .close-button:hover {
@@ -90,6 +88,7 @@
             height: 100px;
             overflow: hidden;
             position: relative;
+            margin-top: 20px;
         }
         .story {
             position: absolute;
@@ -225,4 +224,4 @@
 
             function showStory(index) {
                 stories.forEach((story, i) => {
-                    story
+                    story.classList.remove('active');
