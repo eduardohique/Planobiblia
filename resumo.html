@@ -41,12 +41,11 @@
             transform: translate(-50%, -50%);
             width: 90%;
             max-width: 600px;
-            background: url('https://example.com/pergaminho.jpg') no-repeat center center / cover; /* URL de exemplo, substitua pela URL real */
+            background-color: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             z-index: 1000;
-            background-color: white; /* Adiciona um fundo branco para melhor legibilidade */
         }
         .popup h2 {
             color: #ff6347;
@@ -154,7 +153,6 @@
         <button class="close-button" onclick="closePopup()">Fechar</button>
     </div>
     <script>
-        // Lista de livros da Bíblia de Gênesis a Apocalipse
         const books = [
             { title: "Gênesis", resumo: `Resumo
 • Conta a origem do mundo, da humanidade, do pecado e do povo de Israel.
@@ -255,51 +253,76 @@ Principais histórias:
 • Reformas dos reis fiéis: (2 Cr 14-35).
 Referências a Jesus:
 • Promessa davídica: (1 Cr 17:11-14) Aponta para o Messias.
-• O Templo: Figura de Cristo como mediador entre Deus e os homens.` },
-            { title: "Esdras", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Neemias", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Ester", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Jó", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Salmos", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Provérbios", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Eclesiastes", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Cânticos", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Isaías", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Jeremias", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Lamentações", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Ezequiel", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Daniel", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Oséias", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Joel", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Amós", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Obadias", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Jonas", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Miquéias", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Naum", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Habacuque", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Sofonias", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Ageu", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Zacarias", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Malaquias", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Mateus", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Marcos", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Lucas", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "João", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Atos", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Romanos", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "1 Coríntios", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "2 Coríntios", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Gálatas", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Efésios", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Filipenses", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Colossenses", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "1 Tessalonicenses", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "2 Tessalonicenses", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "1 Timóteo", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "2 Timóteo", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Tito", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Filemom", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Hebreus", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "Tiago", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "1 Pedro", resumo: "Espera ai apressadinho não realizamos essa leitura ainda" },
-            { title: "2 Pedro", resumo: "Espera ai apressadinho não realizamos essa leitura ainda
+• O Templo: Figura de Cristo como mediador entre Deus e os homens.` }
+        ];
+
+        const buttonsContainer = document.getElementById('buttons-container');
+        const popup = document.getElementById('popup');
+        const popupTitle = document.getElementById('popup-title');
+        const popupContent = document.getElementById('popup-content');
+        const storiesContainer = document.getElementById('stories');
+
+        books.forEach(book => {
+            const button = document.createElement('button');
+            button.classList.add('button');
+            button.textContent = book.title;
+            button.onclick = () => openPopup(book.title, book.resumo);
+            buttonsContainer.appendChild(button);
+        });
+
+        function openPopup(title, resumo) {
+            popupTitle.textContent = title;
+            popupContent.textContent = resumo;
+            popup.style.display = 'block';
+            storiesContainer.innerHTML = ''; // Limpar comentários ao abrir o popup
+        }
+
+        function closePopup() {
+            popup.style.display = 'none';
+        }
+
+        function postComment() {
+            const commentText = document.getElementById('comment-text').value;
+            if (commentText.trim() !== '') {
+                const commentDiv = document.createElement('div');
+                commentDiv.classList.add('story');
+                commentDiv.innerHTML = `
+                    <p>${commentText}</p>
+                    <div class="reactions">
+                        <span class="reaction">❤️</span>
+                        <span class="reaction">🔥</span>
+                        <span class="reaction">👏</span>
+                    </div>
+                `;
+                storiesContainer.appendChild(commentDiv);
+                document.getElementById('comment-text').value = ''; // Limpar campo de texto
+                startStories();
+            }
+        }
+
+        function startStories() {
+            const stories = document.querySelectorAll('.story');
+            let currentStory = 0;
+
+            function showStory(index) {
+                stories.forEach((story, i) => {
+                    story.classList.remove('active');
+                    if (i === index) {
+                        story.classList.add('active');
+                    }
+                });
+            }
+
+            function nextStory() {
+                currentStory = (currentStory + 1) % stories.length;
+                showStory(currentStory);
+            }
+
+            if (stories.length > 0) {
+                showStory(currentStory);
+                setInterval(nextStory, 3000);
+            }
+        }
+    </script>
+</body>
+</html>
