@@ -312,4 +312,24 @@ Referências a Jesus:
             let currentStory = 0;
 
             function showStory(index) {
-                stories.forEach((story,
+                stories.forEach((story, i) => {
+                    story.classList.remove('active');
+                    if (i === index) {
+                        story.classList.add('active');
+                    }
+                });
+            }
+
+            function nextStory() {
+                currentStory = (currentStory + 1) % stories.length;
+                showStory(currentStory);
+            }
+
+            if (stories.length > 0) {
+                showStory(currentStory);
+                setInterval(nextStory, 3000);
+            }
+        }
+    </script>
+</body>
+</html>
