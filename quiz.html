@@ -99,6 +99,32 @@
             // Continue with the rest of the questions...
         ];
 
+        const correctMessages = [
+            "Aleluia! Você acertou! Tá sabendo tudo!",
+            "Glória a Deus! Você passou no teste bíblico!",
+            "Isso aí! O Espírito Santo tá te revelando!",
+            "Uau! Você merece um 'Maná' de prêmio!",
+            "Sabedoria de Salomão detectada!",
+            "Até Paulo ficaria impressionado com seu conhecimento!",
+            "Moisés abriu o Mar Vermelho, e você abriu o caminho para a resposta certa!",
+            "Davi derrubou Golias, e você derrubou essa questão com facilidade!",
+            "Se continuar assim, daqui a pouco vai estar ensinando na Escola Bíblica!",
+            "Jesus disse que a verdade liberta, e você está livre da dúvida!"
+        ];
+
+        const incorrectMessages = [
+            "Eita, deu um 'Jonas' e foi pro lado errado!",
+            "Cuidado para não tropeçar na pedra de tropeço!",
+            "Essa passou igual flecha do lado! Tenta de novo!",
+            "Ops! Parece que você precisa de um tempo no deserto para meditar!",
+            "Até Pedro negou 3 vezes, então não desanima!",
+            "Essa resposta foi parar na cova dos leões!",
+            "Tá parecendo os discípulos antes de Jesus explicar tudo!",
+            "Parece que você se perdeu no Êxodo, bora tentar de novo!",
+            "Essa foi dura igual o coração de Faraó!",
+            "Não desiste! Até Moisés demorou 40 anos pra chegar no destino!"
+        ];
+
         let currentQuestionIndex = 0;
         let score = 0;
         let username = '';
@@ -128,15 +154,23 @@
                 optionsContainer.appendChild(button);
             });
             document.getElementById('message').textContent = '';
+            document.getElementById('message').style.color = '';
+        }
+
+        function getRandomMessage(messages) {
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            return messages[randomIndex];
         }
 
         function checkAnswer(selectedIndex) {
             const question = questions[currentQuestionIndex];
             if (selectedIndex === question.answer) {
-                document.getElementById('message').textContent = 'Que isso eim é bom de Bíblia mesmo, Parabéns!';
+                document.getElementById('message').textContent = getRandomMessage(correctMessages);
+                document.getElementById('message').style.color = 'green';
                 score++;
             } else {
-                document.getElementById('message').textContent = 'Oloco a gente tinha certeza que você tava lendo a bíblia todos os dias mas agora to revendo meus conceitos';
+                document.getElementById('message').textContent = getRandomMessage(incorrectMessages);
+                document.getElementById('message').style.color = 'red';
             }
             document.querySelectorAll('.options button').forEach(button => {
                 button.disabled = true;
