@@ -109,6 +109,9 @@
             background-color: #ff4500;
             transform: translateY(-3px);
         }
+        .comment-section {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -121,14 +124,12 @@
         <span class="close-button" onclick="closePopup()">×</span>
         <h2 id="popup-title"></h2>
         <p>Resumo do livro, principais histórias e referência sobre Jesus.</p>
-        <div class="comments">
-            <textarea placeholder="Adicione seus comentários ou observações"></textarea>
-            <button>Postar</button>
+        <div class="comment-section">
+            <textarea id="comment-text" placeholder="Adicione seus comentários ou observações"></textarea>
+            <button onclick="postComment()">Postar</button>
         </div>
-        <div class="reactions">
-            <span class="reaction">❤️</span>
-            <span class="reaction">🔥</span>
-            <span class="reaction">👏</span>
+        <div class="comments" id="comments">
+            <!-- Comentários serão inseridos aqui -->
         </div>
     </div>
     <script>
@@ -153,6 +154,7 @@
         const buttonsContainer = document.getElementById('buttons-container');
         const popup = document.getElementById('popup');
         const popupTitle = document.getElementById('popup-title');
+        const commentsContainer = document.getElementById('comments');
 
         books.forEach(book => {
             const button = document.createElement('button');
@@ -165,10 +167,29 @@
         function openPopup(book) {
             popupTitle.textContent = book;
             popup.style.display = 'block';
+            commentsContainer.innerHTML = ''; // Limpar comentários ao abrir o popup
         }
 
         function closePopup() {
             popup.style.display = 'none';
+        }
+
+        function postComment() {
+            const commentText = document.getElementById('comment-text').value;
+            if (commentText.trim() !== '') {
+                const commentDiv = document.createElement('div');
+                commentDiv.classList.add('comment');
+                commentDiv.innerHTML = `
+                    <p>${commentText}</p>
+                    <div class="reactions">
+                        <span class="reaction">❤️</span>
+                        <span class="reaction">🔥</span>
+                        <span class="reaction">👏</span>
+                    </div>
+                `;
+                commentsContainer.appendChild(commentDiv);
+                document.getElementById('comment-text').value = ''; // Limpar campo de texto
+            }
         }
     </script>
 </body>
