@@ -7,12 +7,14 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             background: linear-gradient(135deg, #a8e063, #56ab2f); /* Fundo verde em tom pastel */
             font-family: 'Comic Sans MS', cursive, sans-serif; /* Fonte jovial */
+            position: relative;
         }
         .container {
             text-align: center;
@@ -42,10 +44,9 @@
             background-color: #ff4500;
             transform: translateY(-3px);
         }
-        .bible-image {
-            margin-top: 20px;
-            width: 200px;
-            height: auto;
+        .emoji {
+            position: absolute;
+            font-size: 2rem;
         }
     </style>
 </head>
@@ -53,7 +54,19 @@
     <div class="container">
         <h1 class="title">Bíblia em 90 Dias</h1>
         <button class="button" onclick="window.location.href='resumo.html'">Acompanhe o resumo</button>
-        <img src="https://example.com/bible-image.jpg" alt="Bíblia" class="bible-image"> <!-- URL de exemplo, substitua pela URL real -->
+        <button class="button" onclick="window.location.href='quiz.html'">Quiz Bíblico</button>
     </div>
+    <script>
+        const emojis = ['📖', '📚', '📜'];
+        const body = document.body;
+        emojis.forEach(() => {
+            const emoji = document.createElement('div');
+            emoji.classList.add('emoji');
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.top = `${Math.random() * 100}%`;
+            emoji.style.left = `${Math.random() * 100}%`;
+            body.appendChild(emoji);
+        });
+    </script>
 </body>
 </html>
