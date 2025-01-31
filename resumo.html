@@ -156,17 +156,106 @@
     <script>
         // Lista de livros da Bíblia de Gênesis a Apocalipse
         const books = [
-            { title: "Gênesis", resumo: "Conta a origem do mundo, da humanidade, do pecado e do povo de Israel. Enfatiza o plano redentor de Deus, começando com a promessa feita a Abraão.\n\nPrincipais histórias:\nCriação: (Gn 1-2) Deus cria o mundo e o ser humano.\nQueda do homem: (Gn 3) Adão e Eva desobedecem a Deus.\nDilúvio e Noé: (Gn 6-9) Deus preserva Noé e sua família.\nTorre de Babel: (Gn 11) A humanidade tenta alcançar Deus por conta própria.\nAbraão: (Gn 12-25) A aliança de Deus e a promessa de uma grande descendência.\nIsaque, Jacó e José: (Gn 26-50) Histórias dos patriarcas e a preservação do povo de Deus no Egito.\n\nReferências a Jesus:\nSemente da mulher (Gn 3:15): Primeiro anúncio de um Salvador.\nSacrifício de Isaque (Gn 22): Prefiguração do sacrifício de Jesus." },
-            { title: "Êxodo", resumo: "Registra a libertação de Israel da escravidão no Egito e o estabelecimento da aliança no Sinai. Introduz a Lei e o tabernáculo como símbolos da presença de Deus.\n\nPrincipais histórias:\nLibertação do Egito: (Êx 1-15) As pragas e a travessia do Mar Vermelho.\nDez Mandamentos: (Êx 20) Deus entrega a Lei a Moisés.\nConstrução do Tabernáculo: (Êx 25-40) Morada de Deus no meio do povo.\n\nReferências a Jesus:\nCordeiro Pascal (Êx 12): Representa Cristo como o Cordeiro de Deus.\nTabernáculo: Simboliza a presença de Deus habitando entre os homens." },
-            { title: "Levítico", resumo: "Um guia sobre santidade e adoração, enfatizando a necessidade de sacrifícios para expiar pecados.\n\nPrincipais histórias:\nSacrifícios: (Lv 1-7) Detalhes sobre ofertas e holocaustos.\nDia da Expiação: (Lv 16) Grande ato de perdão dos pecados do povo.\nLeis de santidade: (Lv 17-26) Como Israel deveria viver separado das nações.\n\nReferências a Jesus:\nSacrifícios: Apontam para o sacrifício perfeito de Jesus.\nSumo Sacerdote: Representa Jesus como mediador eterno." },
-            { title: "Números", resumo: "Narra a jornada de Israel pelo deserto e os desafios enfrentados por causa da incredulidade.\n\nPrincipais histórias:\nCenso e organização do povo: (Nm 1-4).\nEspiões e incredulidade: (Nm 13-14) A geração que não entrou na terra prometida.\nSerpente de bronze: (Nm 21) Cura para os que olham para a serpente.\n\nReferências a Jesus:\nSerpente de bronze (Nm 21:9): Jesus faz analogia a si mesmo em João 3:14-15.\nManá do céu: Simboliza Jesus como o pão da vida." },
-            { title: "Deuteronômio", resumo: "Moisés relembra a Lei e exorta o povo a permanecer fiel antes de entrar na Terra Prometida.\n\nPrincipais histórias:\nRevisão da Lei: (Dt 5-26) Reafirmação da aliança.\nBênçãos e maldições: (Dt 28) Resultado da obediência ou desobediência.\nMorte de Moisés: (Dt 34).\n\nReferências a Jesus:\nProfeta semelhante a Moisés (Dt 18:15): Profecia sobre Jesus.\nAliança: Prefigura a nova aliança em Cristo." },
-            { title: "Josué", resumo: "Relata a conquista e divisão da Terra Prometida sob a liderança de Josué.\n\nPrincipais histórias:\nQueda de Jericó: (Js 6).\nDivisão da Terra: (Js 13-22).\nDespedida de Josué: (Js 23-24).\n\nReferências a Jesus:\nJosué (Yeshua): Nome que significa 'Deus é salvação', prefigura Cristo como líder que nos leva à promessa." },
-            { title: "Juízes", resumo: "Narra o período de caos espiritual em Israel, quando Deus levantava juízes para libertar o povo.\n\nPrincipais histórias:\nDébora e Baraque: (Jz 4-5).\nGideão: (Jz 6-8).\nSansão: (Jz 13-16).\n\nReferências a Jesus:\nJuízes eram libertadores temporários, apontando para o libertador eterno, Jesus." },
-            { title: "Rute", resumo: "História de redenção através do casamento de Rute e Boaz, antepassados de Davi.\n\nPrincipais histórias:\nRute e Noemi: (Rt 1).\nRedenção por Boaz: (Rt 4).\n\nReferências a Jesus:\nBoaz como redentor: Representa Cristo como nosso Redentor." },
-            { title: "1 e 2 Samuel", resumo: "Relata o estabelecimento da monarquia em Israel e a vida dos reis Saul e Davi.\n\nPrincipais histórias:\nUnção de Davi: (1 Sm 16).\nDavi e Golias: (1 Sm 17).\nPecado de Davi e redenção: (2 Sm 11-12).\n\nReferências a Jesus:\nDavi como rei: Aponta para Jesus como o Rei eterno da linhagem de Davi." },
-            { title: "1 e 2 Reis", resumo: "Relata o auge e declínio dos reinos de Israel e Judá.\n\nPrincipais histórias:\nConstrução do Templo por Salomão: (1 Rs 6).\nElias no Monte Carmelo: (1 Rs 18).\nQueda de Israel e Judá: (2 Rs 17; 25).\n\nReferências a Jesus:\nTemplo: Simboliza Cristo como a habitação de Deus entre os homens.\nProfetas: Prefiguram Jesus como o verdadeiro Profeta." },
-            { title: "1 e 2 Crônicas", resumo: "Reconta a história de Israel, com foco na linhagem de Davi e no templo.\n\nPrincipais histórias:\nGenealogias: (1 Cr 1-9).\nReinado de Davi: (1 Cr 10-29).\nReinado de Salomão: (2 Cr 1-9).\nReformas dos reis fiéis: (2 Cr 14-35).\n\nReferências a Jesus:\nPromessa davídica: (1 Cr 17:11-14) Aponta para o Messias.\nO Templo: Figura de Cristo como mediador entre Deus e os homens." }
+            { title: "Gênesis", resumo: `Resumo
+• Conta a origem do mundo, da humanidade, do pecado e do povo de Israel.
+• Enfatiza o plano redentor de Deus, começando com a promessa feita a Abraão.
+Principais histórias:
+• Criação: (Gn 1-2) Deus cria o mundo e o ser humano.
+• Queda do homem: (Gn 3) Adão e Eva desobedecem a Deus.
+• Dilúvio e Noé: (Gn 6-9) Deus preserva Noé e sua família.
+• Torre de Babel: (Gn 11) A humanidade tenta alcançar Deus por conta própria.
+• Abraão: (Gn 12-25) A aliança de Deus e a promessa de uma grande descendência.
+• Isaque, Jacó e José: (Gn 26-50) Histórias dos patriarcas e a preservação do povo de Deus no Egito.
+Referências a Jesus:
+• Semente da mulher (Gn 3:15): Primeiro anúncio de um Salvador.
+• Sacrifício de Isaque (Gn 22): Prefiguração do sacrifício de Jesus.` },
+            { title: "Êxodo", resumo: `Resumo
+• Registra a libertação de Israel da escravidão no Egito e o estabelecimento da aliança no Sinai.
+• Introduz a Lei e o tabernáculo como símbolos da presença de Deus.
+Principais histórias:
+• Libertação do Egito: (Êx 1-15) As pragas e a travessia do Mar Vermelho.
+• Dez Mandamentos: (Êx 20) Deus entrega a Lei a Moisés.
+• Construção do Tabernáculo: (Êx 25-40) Morada de Deus no meio do povo.
+Referências a Jesus:
+• Cordeiro Pascal (Êx 12): Representa Cristo como o Cordeiro de Deus.
+• Tabernáculo: Simboliza a presença de Deus habitando entre os homens.` },
+            { title: "Levítico", resumo: `Resumo
+• Um guia sobre santidade e adoração, enfatizando a necessidade de sacrifícios para expiar pecados.
+Principais histórias:
+• Sacrifícios: (Lv 1-7) Detalhes sobre ofertas e holocaustos.
+• Dia da Expiação: (Lv 16) Grande ato de perdão dos pecados do povo.
+• Leis de santidade: (Lv 17-26) Como Israel deveria viver separado das nações.
+Referências a Jesus:
+• Sacrifícios: Apontam para o sacrifício perfeito de Jesus.
+• Sumo Sacerdote: Representa Jesus como mediador eterno.` },
+            { title: "Números", resumo: `Resumo
+• Narra a jornada de Israel pelo deserto e os desafios enfrentados por causa da incredulidade.
+Principais histórias:
+• Censo e organização do povo: (Nm 1-4).
+• Espiões e incredulidade: (Nm 13-14) A geração que não entrou na terra prometida.
+• Serpente de bronze: (Nm 21) Cura para os que olham para a serpente.
+Referências a Jesus:
+• Serpente de bronze (Nm 21:9): Jesus faz analogia a si mesmo em João 3:14-15.
+• Maná do céu: Simboliza Jesus como o pão da vida.` },
+            { title: "Deuteronômio", resumo: `Resumo
+• Moisés relembra a Lei e exorta o povo a permanecer fiel antes de entrar na Terra Prometida.
+Principais histórias:
+• Revisão da Lei: (Dt 5-26) Reafirmação da aliança.
+• Bênçãos e maldições: (Dt 28) Resultado da obediência ou desobediência.
+• Morte de Moisés: (Dt 34).
+Referências a Jesus:
+• Profeta semelhante a Moisés (Dt 18:15): Profecia sobre Jesus.
+• Aliança: Prefigura a nova aliança em Cristo.` },
+            { title: "Josué", resumo: `Resumo
+• Relata a conquista e divisão da Terra Prometida sob a liderança de Josué.
+Principais histórias:
+• Queda de Jericó: (Js 6).
+• Divisão da Terra: (Js 13-22).
+• Despedida de Josué: (Js 23-24).
+Referências a Jesus:
+• Josué (Yeshua): Nome que significa 'Deus é salvação', prefigura Cristo como líder que nos leva à promessa.` },
+            { title: "Juízes", resumo: `Resumo
+• Narra o período de caos espiritual em Israel, quando Deus levantava juízes para libertar o povo.
+Principais histórias:
+• Débora e Baraque: (Jz 4-5).
+• Gideão: (Jz 6-8).
+• Sansão: (Jz 13-16).
+Referências a Jesus:
+• Juízes eram libertadores temporários, apontando para o libertador eterno, Jesus.` },
+            { title: "Rute", resumo: `Resumo
+• História de redenção através do casamento de Rute e Boaz, antepassados de Davi.
+Principais histórias:
+• Rute e Noemi: (Rt 1).
+• Redenção por Boaz: (Rt 4).
+Referências a Jesus:
+• Boaz como redentor: Representa Cristo como nosso Redentor.` },
+            { title: "1 e 2 Samuel", resumo: `Resumo
+• Relata o estabelecimento da monarquia em Israel e a vida dos reis Saul e Davi.
+Principais histórias:
+• Unção de Davi: (1 Sm 16).
+• Davi e Golias: (1 Sm 17).
+• Pecado de Davi e redenção: (2 Sm 11-12).
+Referências a Jesus:
+• Davi como rei: Aponta para Jesus como o Rei eterno da linhagem de Davi.` },
+            { title: "1 e 2 Reis", resumo: `Resumo
+• Relata o auge e declínio dos reinos de Israel e Judá.
+Principais histórias:
+• Construção do Templo por Salomão: (1 Rs 6).
+• Elias no Monte Carmelo: (1 Rs 18).
+• Queda de Israel e Judá: (2 Rs 17; 25).
+Referências a Jesus:
+• Templo: Simboliza Cristo como a habitação de Deus entre os homens.
+• Profetas: Prefiguram Jesus como o verdadeiro Profeta.` },
+            { title: "1 e 2 Crônicas", resumo: `Resumo
+• Reconta a história de Israel, com foco na linhagem de Davi e no templo.
+Principais histórias:
+• Genealogias: (1 Cr 1-9).
+• Reinado de Davi: (1 Cr 10-29).
+• Reinado de Salomão: (2 Cr 1-9).
+• Reformas dos reis fiéis: (2 Cr 14-35).
+Referências a Jesus:
+• Promessa davídica: (1 Cr 17:11-14) Aponta para o Messias.
+• O Templo: Figura de Cristo como mediador entre Deus e os homens.` }
         ];
 
         // Adiciona a frase "Espera ai apressadinho não realizamos essa leitura ainda" para os livros não cobertos
@@ -223,5 +312,4 @@
             let currentStory = 0;
 
             function showStory(index) {
-                stories.forEach((story, i) => {
-                    story.classList.remove('active');
+                stories.forEach((story,
