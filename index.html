@@ -68,7 +68,7 @@
     </div>
     <script>
         const emojis = ['📖', '📚', '📜', '✝️', '🙏'];
-        const body = document.body;
+        const container = document.querySelector('.container');
         for (let i = 0; i < 20; i++) {
             const emoji = document.createElement('div');
             emoji.classList.add('emoji');
@@ -76,7 +76,7 @@
             emoji.style.top = `${Math.random() * 100}%`;
             emoji.style.left = `${Math.random() * 100}%`;
             emoji.style.animationDelay = `${Math.random() * 5}s`;
-            body.appendChild(emoji);
+            container.appendChild(emoji);
         }
     </script>
 </body>
