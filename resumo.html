@@ -6,98 +6,170 @@
     <title>Resumo dos Livros da Bíblia</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #f0f8ff;
             margin: 0;
             padding: 20px;
+            text-align: center;
         }
-        .card {
-            border: 1px solid #dee2e6;
-            border-radius: 5px;
-            padding: 10px;
-            margin: 10px 0;
-            background-color: #fff;
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
         }
-        .card h2 {
-            margin: 0;
+        .button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background-color: #ff6347; /* Tom de laranja */
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
-        .comments {
-            margin-top: 10px;
+        .button:hover {
+            background-color: #ff4500;
+            transform: translateY(-3px);
         }
-        .comments textarea {
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 600px;
+            background: url('https://example.com/pergaminho.jpg') no-repeat center center / cover; /* URL de exemplo, substitua pela URL real */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        .popup h2 {
+            color: #ff6347;
+        }
+        .popup textarea {
             width: 100%;
-            height: 60px;
+            height: 50px;
             margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 5px;
         }
-        .comments button {
+        .popup button {
             margin-top: 10px;
-            padding: 5px 10px;
-            background-color: #007bff;
+            padding: 8px 15px;
+            background-color: #ff6347;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        .comments button:hover {
-            background-color: #0056b3;
+        .popup button:hover {
+            background-color: #ff4500;
         }
         .reactions {
             display: flex;
-            gap: 10px;
+            justify-content: space-around;
             margin-top: 10px;
         }
         .reaction {
             cursor: pointer;
             font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        .reaction:hover {
+            transform: scale(1.2);
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #ff6347;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background-color: #ff6347;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #ff4500;
+            transform: translateY(-3px);
         }
     </style>
 </head>
 <body>
     <h1>Resumo dos Livros da Bíblia</h1>
-    <div id="cards-container">
-        <!-- Cards serão gerados pelo JavaScript -->
+    <div class="buttons-container" id="buttons-container">
+        <!-- Botões serão gerados pelo JavaScript -->
+    </div>
+    <button class="back-button" onclick="window.location.href='index.html'">Voltar</button>
+    <div class="popup" id="popup">
+        <span class="close-button" onclick="closePopup()">×</span>
+        <h2 id="popup-title"></h2>
+        <p>Resumo do livro, principais histórias e referência sobre Jesus.</p>
+        <div class="comments">
+            <textarea placeholder="Adicione seus comentários ou observações"></textarea>
+            <button>Postar</button>
+        </div>
+        <div class="reactions">
+            <span class="reaction">❤️</span>
+            <span class="reaction">🔥</span>
+            <span class="reaction">👏</span>
+        </div>
     </div>
     <script>
         // Lista de livros da Bíblia de Gênesis a Apocalipse
         const books = [
-            "Gênesis", "Êxodo", "Levítico", "Números", "Deuteronômio", 
-            "Josué", "Juízes", "Rute", "1 Samuel", "2 Samuel", "1 Reis", 
-            "2 Reis", "1 Crônicas", "2 Crônicas", "Esdras", "Neemias", 
-            "Ester", "Jó", "Salmos", "Provérbios", "Eclesiastes", 
-            "Cânticos", "Isaías", "Jeremias", "Lamentações", "Ezequiel", 
-            "Daniel", "Oséias", "Joel", "Amós", "Obadias", "Jonas", 
-            "Miquéias", "Naum", "Habacuque", "Sofonias", "Ageu", 
-            "Zacarias", "Malaquias", "Mateus", "Marcos", "Lucas", 
-            "João", "Atos", "Romanos", "1 Coríntios", "2 Coríntios", 
-            "Gálatas", "Efésios", "Filipenses", "Colossenses", 
-            "1 Tessalonicenses", "2 Tessalonicenses", "1 Timóteo", 
-            "2 Timóteo", "Tito", "Filemom", "Hebreus", "Tiago", 
-            "1 Pedro", "2 Pedro", "1 João", "2 João", "3 João", 
+            "Gênesis", "Êxodo", "Levítico", "Números", "Deuteronômio",
+            "Josué", "Juízes", "Rute", "1 Samuel", "2 Samuel", "1 Reis",
+            "2 Reis", "1 Crônicas", "2 Crônicas", "Esdras", "Neemias",
+            "Ester", "Jó", "Salmos", "Provérbios", "Eclesiastes",
+            "Cânticos", "Isaías", "Jeremias", "Lamentações", "Ezequiel",
+            "Daniel", "Oséias", "Joel", "Amós", "Obadias", "Jonas",
+            "Miquéias", "Naum", "Habacuque", "Sofonias", "Ageu",
+            "Zacarias", "Malaquias", "Mateus", "Marcos", "Lucas",
+            "João", "Atos", "Romanos", "1 Coríntios", "2 Coríntios",
+            "Gálatas", "Efésios", "Filipenses", "Colossenses",
+            "1 Tessalonicenses", "2 Tessalonicenses", "1 Timóteo",
+            "2 Timóteo", "Tito", "Filemom", "Hebreus", "Tiago",
+            "1 Pedro", "2 Pedro", "1 João", "2 João", "3 João",
             "Judas", "Apocalipse"
         ];
 
-        const cardsContainer = document.getElementById('cards-container');
+        const buttonsContainer = document.getElementById('buttons-container');
+        const popup = document.getElementById('popup');
+        const popupTitle = document.getElementById('popup-title');
 
         books.forEach(book => {
-            const card = document.createElement('div');
-            card.classList.add('card');
-            card.innerHTML = `
-                <h2>${book}</h2>
-                <p>Resumo do livro, principais histórias e referência sobre Jesus.</p>
-                <div class="comments">
-                    <textarea placeholder="Adicione seus comentários ou observações"></textarea>
-                    <button>Postar</button>
-                </div>
-                <div class="reactions">
-                    <span class="reaction">❤️</span>
-                    <span class="reaction">🔥</span>
-                    <span class="reaction">👏</span>
-                </div>
-            `;
-            cardsContainer.appendChild(card);
+            const button = document.createElement('button');
+            button.classList.add('button');
+            button.textContent = book;
+            button.onclick = () => openPopup(book);
+            buttonsContainer.appendChild(button);
         });
 
-        // Comentários e reações podem ser manipulados aqui
+        function openPopup(book) {
+            popupTitle.textContent = book;
+            popup.style.display = 'block';
+        }
+
+        function closePopup() {
+            popup.style.display = 'none';
+        }
     </script>
 </body>
 </html>
